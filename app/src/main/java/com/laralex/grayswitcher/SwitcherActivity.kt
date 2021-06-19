@@ -6,7 +6,7 @@ import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 
-// TODO: fully no UI (even without flashing black screen)
+// DONE: fully no UI (even without flashing black screen)
 // TODO: application icon
 // TODO: localization
 // TODO: check permission granted - show dialog with ADB command if not
