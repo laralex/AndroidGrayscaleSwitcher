@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.AppCompat.AuxActivities">
+
+    <TextView
+        android:id="@+id/tipIntro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="6dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="6dp"
+        android:gravity="start|center"
+        android:text="@string/permission_tip_intro" />
+
+    <TextView
+        android:id="@+id/tipSolution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tipIntro"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="15dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="6dp"
+        android:gravity="start|center"
+        android:text="@string/permission_tip_solution"/>
+
+    <TextView
+        android:id="@+id/tipCommand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tipSolution"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="6dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="6dp"
+        android:gravity="start|center"
+        android:textColor="#FF0000"
+        android:textIsSelectable="true"
+        android:text="@string/adb_permission_command" />
+
+    <TextView
+        android:id="@+id/tipGuarantees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tipCommand"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="6dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="6dp"
+        android:gravity="start|center"
+        android:text="@string/permission_tip_guarantees" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tipGuarantees"
+        android:weightSum="2"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp">
+
+        <Button
+            android:id="@+id/copyButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/copy_button"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/closeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/close_button"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
+
+
+</RelativeLayout>
