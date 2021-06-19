@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Grayscale Switcher</string>
+    <string name="app_tag">GraySwitcher</string>
+    <string name="update_message_template">Grayscale mode was %s now %s</string>
+</resources>
