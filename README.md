@@ -1,4 +1,4 @@
-# Grayscale Switcher for Android
+# Grayscale Switcher 0.1.0 for Android
 Uses Android 5.0+ API to toggle a system setting for monochrome (grayscale) display color. 
 I made it, because such application requires either ROOT rights or a permission configured through ADB,
 and as I don't quite want to give such permissions to random apps on Google Play, so I made my own - it's free, fast, and nothing malicious (feel free to explore the source code)  
@@ -17,6 +17,9 @@ it'll show a little guide on how to fix the issue
 
 ## Install
 * download `.apk` and install it on your Android phone
+  * [`GrayscaleSwitcher-0.1.0.apk`](https://drive.google.com/file/d/1J4ifdCSAC44WI9gjhdozoFcchWkr_7NF/view?usp=sharing)
+  * `md5sum` checksum: `d813c3728e47029ca498f9ff8e36a33e`  
+  * `sha256sum` checksum: `8656f9f29f427e1d2050a8b0b2879a12d5b6a26efe1b620807066193bdac5684`
 * [set up ADB](https://tasker.joaoapps.com/userguide/en/help/ah_adb_setup.html) for your phone and PC (don't forget to enable Developer options)
 * give permission to write secure settings by running in your PC's terminal
 ```
