@@ -37,4 +37,4 @@ NOTE: It's technically possible that even with granted permission the mode will 
 you should see a Toast notification saying that (however I've never encountered such issue on my Xiaomi smartphone).
 
 ## Screenshots
-![Alt text](repository/tip.jpg?raw=true "Permission tip")
+<img src="repository/tip.jpg" width="400"/>
