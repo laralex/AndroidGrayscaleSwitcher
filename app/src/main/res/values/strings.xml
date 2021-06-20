@@ -1,41 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">
-        Grayscale Switcher</string>
-    <string name="app_tag">
-        GraySwitcher</string>
+    <string name="app_name">Grayscale Switcher</string>
+    <string name="app_tag">GraySwitcher</string>
 
-    <string name="mode_on">
-        ON</string>
-    <string name="mode_off">
-        OFF</string>
-    <string name="change_success_template">
-        Grayscale mode is %s</string>
-    <string name="change_failure_template">
-        Couldn\'t switch grayscale mode, it\'s still %s</string>
+    <string name="mode_on">ON</string>
+    <string name="mode_off">OFF</string>
+    <string name="change_success_template">Grayscale mode is %s</string>
+    <string name="change_failure_template">Couldn\'t switch grayscale mode, it\'s still %s</string>
 
-    <string name="permission_tip_title">
-        Can\'t run without a granted permission</string>
-    <string name="permission_tip_intro">
-        The application currently doesn\'t have a permission to write secure settings,
-        in particular we need \"Simulate color space\" option in \"Developer options\"</string>
-    <string name="permission_tip_solution">
-        A solution is to turn on \"Developer options\" on your phone (Google how)
-        and to give the app the aforementioned permission by either:\n
-        — unlocking ROOT rights or\n
-        — connecting via USB to a PC which has ADB tool and executing in a terminal:</string>
-    <string name="adb_label">
-        adb command</string>
-    <string name="adb_permission_command">
-        adb shell pm grant com.laralex.grayswitcher android.permission.WRITE_SECURE_SETTINGS</string>
-    <string name="adb_command_copied">
-        ADB command was copied</string>
-    <string name="permission_tip_guarantees">
-        If you\'re worried of giving such permission to us,
-        check out our open source code, which proofs,
-        that we DO NOT do any stuff on your phone except for switching of the grayscale setting</string>
-    <string name="copy_button">
-        Copy ADB command</string>
-    <string name="close_button">
-        Close</string>
+    <string name="permission_tip_title">Can\'t run without a granted permission</string>
+    <string name="permission_tip_intro">Grayscale Switcher doesn\'t have a permission to write secure settings, in particular we need option \"Developer options -> Simulate color space\" </string>
+    <string name="permission_tip_solution">You can give this permission in two ways:\n— unlock ROOT rights or\n— <a href="https://tasker.joaoapps.com/userguide/en/help/ah_adb_setup.html">set up ADB tool</a> on your PC, connect via USB and execute the next command in PC console (scrollable):</string>
+    <string name="adb_label">adb command</string>
+    <string name="adb_permission_command">adb shell pm grant com.laralex.grayswitcher android.permission.WRITE_SECURE_SETTINGS</string>
+    <string name="adb_command_copied">ADB command was copied</string>
+    <string name="permission_tip_guarantees">If you\'re worried of giving such permission to us, check out our <a href="https://github.com/laralex/AndroidGrayscaleSwitcher">open source code</a>, which proofs, that  <font color="red">we DON\'T</font> do any stuff on your phone except for switching of the grayscale setting.</string>
+
+    <string name="copy_button">Copy ADB command</string>
+    <string name="close_button">Close</string>
 </resources>

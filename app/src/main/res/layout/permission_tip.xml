@@ -1,98 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="-50dp"
+    android:scrollbarFadeDuration="9999"
     android:theme="@style/Theme.AppCompat.AuxActivities">
 
-    <TextView
-        android:id="@+id/tipIntro"
+    <LinearLayout
+        android:id="@+id/topTip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:weightSum="1"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:paddingLeft="0dp"
-        android:paddingTop="6dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="6dp"
-        android:gravity="start|center"
-        android:text="@string/permission_tip_intro" />
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/tipIntro"
+            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:gravity="start|center"
+            android:paddingTop="6dp"
+            android:layout_weight="0.9"
+            android:text="@string/permission_tip_intro"/>
+
+        <ImageView
+            android:id="@+id/appIcon"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="0.15"
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/warningIcon"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_marginStart="0dp"-->
+<!--            android:layout_weight="0.07"-->
+<!--            app:srcCompat="@android:drawable/ic_dialog_alert"/>-->
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tipSolution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tipIntro"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:paddingLeft="0dp"
-        android:paddingTop="15dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="6dp"
+        android:layout_below="@+id/topTip"
+        android:layout_alignStart="@+id/topTip"
+        android:layout_alignEnd="@+id/topTip"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:gravity="start|center"
-        android:text="@string/permission_tip_solution"/>
+        android:linksClickable="true"
+        android:paddingTop="6dp"
+        android:text="@string/permission_tip_solution" />
 
-    <TextView
+    <HorizontalScrollView
         android:id="@+id/tipCommand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tipSolution"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:paddingLeft="0dp"
-        android:paddingTop="6dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="6dp"
-        android:gravity="start|center"
-        android:textColor="#FF0000"
-        android:textIsSelectable="true"
-        android:text="@string/adb_permission_command" />
+        android:layout_alignStart="@+id/tipSolution"
+        android:layout_alignEnd="@+id/tipSolution"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:scrollbarSize="10dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbarThumbHorizontal="@android:color/holo_blue_light">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="9dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#7AFFFFFF"
+            android:gravity="start|center"
+            android:scrollHorizontally="true"
+            android:text="@string/adb_permission_command"
+            android:textColor="#2C89BC"
+            android:textIsSelectable="true"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:typeface="monospace" />
+    </HorizontalScrollView>
 
     <TextView
         android:id="@+id/tipGuarantees"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tipCommand"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:paddingLeft="0dp"
-        android:paddingTop="6dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="6dp"
+        android:layout_alignStart="@+id/tipCommand"
+        android:layout_alignEnd="@+id/tipCommand"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="0dp"
         android:gravity="start|center"
+        android:linksClickable="true"
         android:text="@string/permission_tip_guarantees" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tipGuarantees"
-        android:weightSum="2"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp">
+        android:weightSum="2">
 
         <Button
             android:id="@+id/copyButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/copy_button"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:text="@string/copy_button" />
 
         <Button
             android:id="@+id/closeButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/close_button"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:text="@string/close_button" />
     </LinearLayout>
 
 

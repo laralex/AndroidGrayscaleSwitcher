@@ -10,8 +10,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -112,6 +114,11 @@ class SwitcherActivity : AppCompatActivity() {
     private fun showPermissionTip() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.permission_tip)
+
+        setupClickableHyperlinks(dialog.findViewById(R.id.tipIntro))
+        setupClickableHyperlinks(dialog.findViewById(R.id.tipSolution))
+        setupClickableHyperlinks(dialog.findViewById(R.id.tipGuarantees))
+        
         dialog.setOnDismissListener {
             finish()
         }
@@ -163,5 +170,14 @@ class SwitcherActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper())
             .postDelayed( { toast.cancel() }, durationMs)
+    }
+
+    /**
+     * Enables clickable hyperlinks for the given TextView (because by default <a href...> links are not clickable)
+     * Needed in permission tip dialog
+     * @param txtView - destination TextView, which requires enabling of clickable hyperlinks
+     */
+    private fun setupClickableHyperlinks(txtView: TextView) {
+        txtView.movementMethod = LinkMovementMethod.getInstance()
     }
 }
