@@ -7,6 +7,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.util.Log
 import android.widget.Button
@@ -15,19 +17,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
 
-// DONE: fully no UI (even without flashing black screen)
+// DONE: fully no UI to switch (even without flashing black screen)
 // DONE: application icon
-// TODO: localization
 // DONE: check permission granted - show dialog with ADB command if not
+// TODO: localization
+// TODO: permission tip to better help with resolution
+// TODO: make a button in status bar to switch aka switch Wi-fi or airplane mode
+// TODO: better style of permission tip dialog (colors, highlights, fonts, remove top bar)
 // TODO: make settings screen (choose daltonizer mode, choose screen saturation)
 // TODO: make gesture (globally detect), might need to turn the app into a background service
-// TODO: better style of permission tip dialog (colors, hightlights, fonts, remove top bar)
-// TODO: permission tip better help with resolution (
 
 class SwitcherActivity : AppCompatActivity() {
-
-    private var mHasWriteSettingsPermission: Boolean = false
-
     companion object {
         lateinit var TAG: String
     }
@@ -46,7 +46,7 @@ class SwitcherActivity : AppCompatActivity() {
     }
 
     /**
-     * Activity entry point, after which resources and OS actions are accesible
+     * Activity entry point, after which resources and OS actions are accessible
      *
      * @param savedInstanceState
      */
@@ -54,15 +54,15 @@ class SwitcherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         TAG = getString(R.string.app_tag)
 
-        mHasWriteSettingsPermission = checkPermissionGranted(Manifest.permission.WRITE_SECURE_SETTINGS)
-        if (!mHasWriteSettingsPermission) {
+        val hasWriteSettingsPermission = checkPermissionGranted(Manifest.permission.WRITE_SECURE_SETTINGS)
+        if (!hasWriteSettingsPermission) {
             showPermissionTip()
             return
         }
 
         val previousGrayscaleValue = isGrayscaleEnabled()
         val newGrayscaleValue = setGrayscale(!previousGrayscaleValue)
-        reportGrayscaleSwitch(previousGrayscaleValue, newGrayscaleValue)
+        reportGrayscaleSwitch(previousGrayscaleValue, newGrayscaleValue, 500)
         finish()
     }
 
@@ -146,13 +146,22 @@ class SwitcherActivity : AppCompatActivity() {
      *
      * @param previousValue - whether grayscale mode had been enabled before switch was executed
      * @param newValue - whether grayscale mode is now enabled after switch was executed
+     * @param durationMs - how many milliseconds the Toast message will be shown
      */
-    private fun reportGrayscaleSwitch(previousValue: Boolean, newValue: Boolean) {
-        val messageTemplate = getString(R.string.update_message_template)
-        val updateMessage = String.format(messageTemplate,
-            if (previousValue) "ON" else "OFF",
-            if (newValue) "ON" else "OFF")
-        Toast.makeText(this, updateMessage, Toast.LENGTH_SHORT).show()
+    private fun reportGrayscaleSwitch(previousValue: Boolean, newValue: Boolean, durationMs: Long) {
+        val messageTemplate = if (previousValue != newValue) {
+            getString(R.string.change_success_template)
+        } else {
+            getString(R.string.change_failure_template)
+        }
+        val updateValue = if (newValue) getString(R.string.mode_on) else getString(R.string.mode_off)
+        val updateMessage = String.format(messageTemplate, updateValue)
+        val toast = Toast.makeText(this, updateMessage, Toast.LENGTH_SHORT)
+
+        toast.show()
         Log.d(TAG, updateMessage)
+
+        Handler(Looper.getMainLooper())
+            .postDelayed( { toast.cancel() }, durationMs)
     }
 }
